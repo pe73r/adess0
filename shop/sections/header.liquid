@@ -207,6 +207,27 @@ HEADER CONTENT
                             {%- endif -%}
                           </div>
                         {%- endfor -%}
+                        {%- comment -%}
+                          New menu for megamenu -- 22-01-20
+                        {%- endcomment -%}
+                        <div class="megamenu--menu_box">
+                          <h3 class="megamenu-title">{{ block.settings.title }}</h3>
+                          <ul>
+                            {% for link in linklists[block.settings.menu-megamenu].links %}
+                            {% assign sub_key = 'subtitle-' | append: forloop.index %}
+                            {% assign sub = block.settings[sub_key] %}
+                              <li>
+                                <a class="menu__link menu-mobile__link" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                {% if sub != blank %}
+                                <h5 class="megamenu-menu__subtitle">{{ sub }}</h5>
+                                {% endif %}
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                        {%- comment -%}
+                          Jusqu'ici
+                        {%- endcomment -%}
 
                         {%- if push_image_count > 0 -%}
                           <div class="MegaMenu__Item" style="{% if push_image_count == 1 %}width: 370px; min-width: 250px;{% else %}width: 660px; min-width: 425px;{% endif %}">
@@ -648,6 +669,39 @@ HEADER CONTENT
           "type": "url",
           "id": "push_2_url",
           "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Title with menu"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title for megamenu",
+          "default": "products"
+        },
+        {
+          "type": "link_list",
+          "id": "menu-megamenu",
+          "label": "Menu megamenu"
+        },
+        {
+          "type": "text",
+          "id": "subtitle-1",
+          "label": "Subtitle submenu 1",
+          "default": "Cleansing"
+        },
+        {
+          "type": "text",
+          "id": "subtitle-2",
+          "label": "Subtitle submenu 2",
+          "default": "Protection"
+        },
+        {
+          "type": "text",
+          "id": "subtitle-3",
+          "label": "Subtitle submenu 3",
+          "default": "Hydratation"
         }
       ]
     }
