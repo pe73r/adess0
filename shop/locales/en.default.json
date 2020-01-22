@@ -13,7 +13,7 @@
     "popup": {
       "close": "Close",
       "email_placeholder": "Enter your email",
-      "submit": "Subscribe",
+      "submit": "subscribe",
       "success": "You have been subscribed to our newsletter."
     },
     "password": {
@@ -51,8 +51,8 @@
   "footer": {
     "newsletter": {
       "success": "You have been subscribed to our newsletter.",
-      "input": "Enter your email address",
-      "submit": "Subscribe"
+      "input": "Enter your email",
+      "submit": "subscribe"
     }
   },
   "search": {

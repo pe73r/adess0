@@ -85,6 +85,12 @@
         "default": "#1c1b1b"
       },
       {
+        "type": "color",
+        "id": "button-footer_background",
+        "label": "Background",
+        "default": "#cdc2ac"
+      },  
+      {
         "type": "header",
         "content": "Header"
       },

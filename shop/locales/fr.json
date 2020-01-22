@@ -52,7 +52,7 @@
     "newsletter": {
       "success": "Vous avez été inscrit à notre newsletter.",
       "input": "Entrez votre email",
-      "submit": "S'inscrire"
+      "submit": "s'inscrire"
     }
   },
   "search": {

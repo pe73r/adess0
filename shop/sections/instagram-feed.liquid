@@ -37,10 +37,10 @@
       {%- endfor -%}
     </div>
   {%- endif -%}
-  
+
   {%- if section.settings.button_text != blank -%}
     <div class="SectionFooter">
-      <a href="{{ section.settings.button_url }}" class="Button Button--primary" target="_blank" rel="noopener">{{ section.settings.button_text | escape }}</a>
+      <a href="{{ section.settings.button_url }}" class="Button Button--primary btn" target="_blank" rel="noopener">{{ section.settings.button_text | escape }}</a>
     </div>
   {%- endif -%}
 </section>

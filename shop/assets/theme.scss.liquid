@@ -19,6 +19,7 @@ $link-color      : {{settings.link_color}};
 $border-color    : {{settings.background | color_mix: settings.text_color, 85}};
 
 $button-background: {{settings.button_background}};
+$button-footer-background: {{settings.button-footer_background}};
 $button-text-color: {{settings.button_text_color}};
 $button-secondary-background: {{settings.button-secondary_background}};
 $button-secondary-text-color: {{settings.button-secondary_text_color}};
@@ -1649,8 +1650,8 @@ body {
 
 .Icon {
   display: inline-block;
-  height: 1em;
-  width: 1em;
+  height: 1.7em;
+  width: 1.7em;
   fill: currentColor;
   vertical-align: middle;
   stroke-width: 1px;
@@ -1943,6 +1944,8 @@ body {
 .Button--primary {
   color: $button-text-color;
   border-color: $button-background;
+  text-transform: inherit;
+  font-size: $button-text-font-size;
 
   &::before {
     background-color: $button-background;
@@ -2063,6 +2066,8 @@ body {
 
 .ButtonGroup__Item {
   margin: 12px;
+  text-transform: inherit;
+  font-size: $button-text-font-size;
 }
 
 .ButtonGroup__Item--expand {
@@ -2990,7 +2995,8 @@ $drawer-header-height : 50px;
   display: block;
   padding: 12px 14px;
   border-radius: 0;
-  border: 1px solid $border-color;
+  // border: 1px solid $border-color;
+  border: none;
   width: 100%;
   line-height: normal;
   resize: none;
@@ -7544,7 +7550,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .FeatureText .SectionHeader__Description {
   margin-top: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 @include av-mq('phone') {
@@ -7751,7 +7757,8 @@ $vertical-spacing-two-products-per-row  : 0px;
   }
 
   .Footer__StoreName {
-    font-size: to-size(11px);
+    font-size: to-size(13px);
+    font-weight: normal;
   }
 
   .Footer__PaymentList {
@@ -11403,8 +11410,27 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 /*------  custom styles --------*/
 
+/*------  utilities --------*/
+
 .relative{
   position: relative;
+}
+
+.desktop-only{
+  display: block;
+}
+
+.mobile-only{
+  display: none;
+}
+
+@include av-mq('phone') {
+  .desktop-only{
+    display: none;
+  }
+  .mobile-only{
+    display: block;
+  }
 }
 
 .u-h1{
@@ -11451,9 +11477,64 @@ $vertical-spacing-two-products-per-row  : 0px;
   font-size: 40px;
 }
 
+.Footer__Newsletter{
+  border: 1px solid #000;
+  display: flex;
+}
+.Form__Input{
+  width: 60%;
+}
+
+.Button-newsletter{
+  width: 40%;
+  background-color: $button-footer-background;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.footer-social{
+  text-align: center;
+  margin-bottom: 40px;
+  .Icon{
+    height: 2.5em;
+    width: 2.5em;
+  }
+}
+
+.footer__content-flex{
+  display: flex;
+  margin-bottom: 10px;
+   svg{
+     width: 20px;
+     margin-right: 10px;
+     fill: #3d3c38;
+   }
+}
+
+.Footer__legal{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.btn-mediakit{
+  font-size: $default-text-font-size;
+}
+@include av-mq('phone') {
+  .Footer__legal{
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .btn-mediakit{
+    margin-bottom: 20px;
+  }
+}
+
 /*---- blog ---------*/
 .Blog_background{
-  padding: 20px 0;
+  padding-top: 20px;
+  margin-bottom: -150px;
 }
 
 .ArticleItem{
@@ -11499,13 +11580,18 @@ $vertical-spacing-two-products-per-row  : 0px;
   .ArticleItem{
     margin-top: 0;
   }
+  .Blog_background{
+    margin-bottom: 0;
+  }
 }
 
 /*---- About ---------*/
 
 .About__background {
   padding-top: 40px;
+  margin-bottom: -80px;
 }
+
 
 /*---- Megamenu ---------*/
 
@@ -11522,8 +11608,8 @@ $vertical-spacing-two-products-per-row  : 0px;
 .megamenu-title{
   font-size: 40px;
   font-family: 'DM Serif Display', serif;
-  margin: 0;
-  margin-bottom: 10px;
+  margin: 10px 0;
+  margin-top: 20px;
 }
 
 .megamenu-menu__subtitle{
