@@ -1,13 +1,13 @@
-/* 
+/*
          IMPORTANT NOTE:
-         
+
          This file is the unminified JS that is used by the theme. This file is therefore not included into the "theme.liquid" Liquid. It is bundled only
          for developers who would like to add their own JavaScript or edit the existing JavaScript. Re-minifying the ile and make sure you include it into
          the "theme.liquid" is up to the developers responsibility.
-         
+
          Because we are using WebPack internally to bundle our JavaScript code, even the unminified file can be quite hard to read or edit due to all the
          code added by WebPack.
-         
+
          Please note that we do not provide any assistance for changes made here that may break the theme: it's at your own risk :).
       */
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1956,10 +1956,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           productMetaPrices.innerHTML = '';
 
           if (newVariant['compare_at_price'] > newVariant['price']) {
-            productMetaPrices.innerHTML += '<span class="ProductMeta__Price Price Price--highlight Text--subdued u-h4" data-money-convertible>' + __WEBPACK_IMPORTED_MODULE_4__helper_Currency__["default"].formatMoney(newVariant['price'], window.theme.moneyFormat) + '</span>';
-            productMetaPrices.innerHTML += '<span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h4" data-money-convertible>' + __WEBPACK_IMPORTED_MODULE_4__helper_Currency__["default"].formatMoney(newVariant['compare_at_price'], window.theme.moneyFormat) + '</span>';
+            productMetaPrices.innerHTML += '<span class="ProductMeta__Price Price Price--highlight u-h4" data-money-convertible>' + __WEBPACK_IMPORTED_MODULE_4__helper_Currency__["default"].formatMoney(newVariant['price'], window.theme.moneyFormat) + '</span>';
+            productMetaPrices.innerHTML += '<span class="ProductMeta__Price Price Price--compareAt u-h4" data-money-convertible>' + __WEBPACK_IMPORTED_MODULE_4__helper_Currency__["default"].formatMoney(newVariant['compare_at_price'], window.theme.moneyFormat) + '</span>';
           } else {
-            productMetaPrices.innerHTML += '<span class="ProductMeta__Price Price Text--subdued u-h4" data-money-convertible>' + __WEBPACK_IMPORTED_MODULE_4__helper_Currency__["default"].formatMoney(newVariant['price'], window.theme.moneyFormat) + '</span>';
+            productMetaPrices.innerHTML += '<span class="ProductMeta__Price Price u-h4" data-money-convertible>' + __WEBPACK_IMPORTED_MODULE_4__helper_Currency__["default"].formatMoney(newVariant['price'], window.theme.moneyFormat) + '</span>';
           }
 
           productMetaPrices.style.display = '';
@@ -6198,26 +6198,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        * Callback when the target changes
        */
 
-    }, {
+    },
+    {
       key: '_onScrollTargetChanged',
       value: function _onScrollTargetChanged(event) {
         // The scrollspy emit also an "oldTarget", but when scrolling very fast with Firefox or Safari, it prevents the old to be removed, so we
         // manually iterate through all of them to remove it first
         if (this.options['stackProductImages']) {
           this.slideshowNavDotsItems.forEach(function (item) {
-            return item.classList.remove('is-selected');
+            return item.classList.remove('img-selected');
           });
-          this.slideshowNavDotsItems[parseInt(event.detail.newTarget.getAttribute('data-image-position'))].classList.add('is-selected');
+          this.slideshowNavDotsItems[parseInt(event.detail.newTarget.getAttribute('data-image-position'))].classList.add('img-selected');
 
           if (this.options['showThumbnails']) {
             this.slideshowNavThumbnailsItems.forEach(function (item) {
-              return item.classList.remove('is-selected');
+              return item.classList.remove('img-selected');
             });
-            this.slideshowNavThumbnailsItems[parseInt(event.detail.newTarget.getAttribute('data-image-position'))].classList.add('is-selected');
+            this.slideshowNavThumbnailsItems[parseInt(event.detail.newTarget.getAttribute('data-image-position'))].classList.add('img-selected');
           }
         }
       }
-    }, {
+    },
+    {
       key: '_switchToImage',
       value: function _switchToImage(event, target) {
         for (var i = 0; i !== this.productSlideshow.flickityInstance.cells.length; ++i) {
@@ -6284,14 +6286,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         // If we have non-stacked with thumbnails, update it
+
         if (!this.options['stackProductImages'] && this.options['showThumbnails']) {
           var imageId = cell.getAttribute('data-image-id');
 
           this.slideshowNavThumbnailsItems.forEach(function (thumbnail) {
             if (thumbnail.getAttribute('data-image-id') === imageId) {
-              thumbnail.classList.add('is-selected');
+              thumbnail.classList.add('img-selected');
             } else {
-              thumbnail.classList.remove('is-selected');
+              thumbnail.classList.remove('img-selected');
             }
           });
         }
