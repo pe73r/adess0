@@ -21,11 +21,11 @@
 {%- endcapture -%}
 
 {%- if section.settings.show_product_recommendations -%}
-  <section class="Section Section--spacingNormal" data-section-id="{{ section.id }}" data-section-type="product-recommendations" data-section-settings='{{ section_settings }}'>
+  <section class="Section Section--spacingNormal ProductRecommendations__margin" data-section-id="{{ section.id }}" data-section-type="product-recommendations" data-section-settings='{{ section_settings }}'>
     {%- if section.settings.heading != blank -%}
       <header class="SectionHeader SectionHeader--center">
         <div class="Container">
-          <h3 class="SectionHeader__Heading Heading u-h3">{{ section.settings.heading | escape }}</h3>
+          <h3 class="SectionHeader__Heading ProductRecommendations_title u-h1">{{ section.settings.heading | escape }}</h3>
         </div>
       </header>
     {%- endif -%}
@@ -73,8 +73,7 @@
 
 {% schema %}
 {
-  "name": "Product recommendations",
-  "class": "shopify-section--bordered",
+  "name": "Product recommendations", 
   "settings": [
     {
       "type": "checkbox",

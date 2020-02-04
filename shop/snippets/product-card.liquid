@@ -1,0 +1,48 @@
+{% comment %}
+{% include 'product-card' with
+product_title : product_title,
+product_type : product_type,
+product_description : product_description,
+product_image : product_image,
+card_product : featured_product,
+button_text : section.settings.cta_text,
+%}
+{% endcomment %}
+{% unless hide_popup %}
+{% include 'popup' with _product : card_product %}
+{% endunless %}
+{% unless hide_cart %}
+<div class="product-card" data-product-type="{{ _product.type }}">
+	<div class="relative">
+			<a href="{{ card_product.url }}">
+			<div {% unless page_collection == false %} data-popup-toggle-mobile data-popup-product='{{ forloop.index }}' {% endunless %} class="product-card__image-container">
+				{% include 'image' with img : product_image, classes : 'product-card__image' , is_cropped: 'center' %}
+			</div>
+			</a>
+
+			<div class="product-card__quickview">
+				<p data-popup-toggle data-popup-product='{{ forloop.index }}' class="product-card__quickview-text">
+					Quick view
+				</p>
+			</div>
+	</div>
+	<div class="product-card__informations">
+		<div {% if page_collection %}
+			data-popup-toggle-mobile
+			data-popup-product='{{ forloop.index }}' {% endif %}
+			class="product-card__text">
+			<a href="{{ card_product.url }}">
+				<h2 class="product-card__title">
+					<div class="text--large heading">{{ product_type }}</div>
+					<div class="product-card__description text--medium secondary-color">
+						{{ product_title }}
+					</div>
+				</h2>
+{% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: 'margin-bottom: 10px;', concierge_install: true %}
+			</a>
+		</div>
+		{% comment %} OR /cart/add?id={{ card_product.selected_or_first_available_variant.id }} {% endcomment %}
+		{% include 'add-to-cart' with text : button_text, classes : 'product-card__button button button--reverse', added_product : card_product %}
+	</div>
+</div>
+{% endunless %}
