@@ -9295,7 +9295,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 @include av-mq('tablet') {
   .Product__Info {
-    padding: 0 20px; 
+    padding: 0 20px;
   }
 }
 
@@ -11747,6 +11747,12 @@ $vertical-spacing-two-products-per-row  : 0px;
   }
 }
 
+.is-selected{
+  img{
+    border: 1px solid #000;
+  }
+}
+
 .Product__metafields{
   padding-bottom: 20px;
   border-bottom: 1px solid #e3e3e3;
@@ -11913,4 +11919,23 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .ProductRecommendations_title{
   font-size:35px;
+}
+
+
+.Product__MainImage{
+   border: none !important;
+}
+
+// new page produit  ////
+
+.Product__Wrapper{
+  width: 100%;
+  max-width: 100%;
+}
+
+.Product__SlideshowNav--thumbnails{
+   position: absolute;
+   top:50%;
+   left: 5%;
+   transform: translate(-5%, -50%);
 }
