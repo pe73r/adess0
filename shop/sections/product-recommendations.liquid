@@ -25,7 +25,7 @@
     {%- if section.settings.heading != blank -%}
       <header class="SectionHeader SectionHeader--center">
         <div class="Container">
-          <h3 class="SectionHeader__Heading ProductRecommendations_title u-h1">{{ section.settings.heading | escape }}</h3>
+          <h3 class="SectionHeader__Heading ProductRecommendations_title Heading u-h1">{{ section.settings.heading | escape }}</h3>
         </div>
       </header>
     {%- endif -%}
@@ -73,7 +73,7 @@
 
 {% schema %}
 {
-  "name": "Product recommendations", 
+  "name": "Product recommendations",
   "settings": [
     {
       "type": "checkbox",
@@ -106,7 +106,14 @@
       "label": "Show color swatch",
       "info": "Some colors appear white? [Learn more](http://support.maestrooo.com/article/80-product-uploading-custom-color-for-color-swatch).",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show-price",
+      "label": "Show price",
+      "default": false
     }
+
   ]
 }
 {% endschema %}

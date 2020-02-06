@@ -1,0 +1,54 @@
+<div class="Product__Gallery Product__Gallery--withThumbnails">
+  <span id="ProductGallery" class="Anchor"></span>
+  {%- capture slideshow_nav -%}
+      {%- if section.settings.show_thumbnails -%}
+        <div class="Product__SlideshowNav Product__SlideshowNav--thumbnails">
+          <div class="Product__SlideshowNavScroller">
+            {%- for image in product.images -%}
+              {%- if image.alt == 'featured' or image.alt == 'featured mobile' -%}
+                {%- continue -%}
+              {%- endif -%}
+
+              {%- assign is_video = false -%}
+
+              {%- if image.alt contains 'youtube.com/embed' or image.alt contains 'player.vimeo.com' -%}
+                {%- assign is_video = true -%}
+              {%- endif -%}
+
+              {%- if section.settings.stack_images -%}
+                <a href="#Image{{ image.id }}" data-image-id="{{ image.id }}" class="Product__SlideshowNavImage {% if is_video %}Product__SlideshowNavImage--video{% endif %} AspectRatio " style="--aspect-ratio: {{ image.aspect_ratio }}">
+                  <img src="{{ image | img_url: '160x' }}">
+
+                  {%- if is_video -%}
+                    <button type="button" class="Product__SlideshowNavPlay" data-action="play-video" aria-label="{{ 'home_page.featured_video.play' | t }}">{% render 'icon' with 'play' %}</button>
+                  {%- endif -%}
+                </a>
+              {%- else -%}
+                <span data-image-id="{{ image.id }}" class="Product__SlideshowNavImage {% if is_video %}Product__SlideshowNavImage--video{% endif %} AspectRatio {% if forloop.first %}is-selected{% endif %}" style="--aspect-ratio: {{ image.aspect_ratio }}">
+                  <img src="{{ image | img_url: '160x' }}">
+
+                  {%- if is_video -%}
+                    <button type="button" class="Product__SlideshowNavPlay" data-action="play-video" aria-label="{{ 'home_page.featured_video.play' | t }}">{% render 'icon' with 'play' %}</button>
+                  {%- endif -%}
+                </span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.stack_images -%}
+        <div class="Product__SlideshowNav Product__SlideshowNav--dots">
+          <div class="Product__SlideshowNavScroller">
+            {%- for image in product.images -%}
+              {%- if image.alt == 'featured' or image.alt == 'featured mobile' -%}
+                {%- continue -%}
+              {%- endif -%}
+
+              <a href="#Image{{ image.id }}" class="Product__SlideshowNavDot {% if forloop.first %}is-selected{% endif %}"></a>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+  {%- endcapture -%}
+</div>

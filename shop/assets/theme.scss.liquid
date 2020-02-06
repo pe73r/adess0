@@ -9,10 +9,14 @@
  @import url('https://fonts.googleapis.com/css?family=DM+Serif+Display:400,400i&display=swap');
  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,400i,500,700,700i&display=swap');
 
+ $custom-font-family: 'DM Serif Display', serif;
+
 /* Colors */
 
 $background      : {{settings.background}};
 $light-background: {{settings.light_background}};
+
+$superheading-color   : {{settings.superheading_color}};
 $heading-color   : {{settings.heading_color}};
 $text-color      : {{settings.text_color}};
 $text-color-light: {{settings.text_light_color}};
@@ -54,6 +58,7 @@ $product-sale-price-color: {{settings.product_on_sale_color}};
 
 {{ settings.heading_font | font_face: font_display: 'fallback' }}
 {{ settings.text_font | font_face: font_display: 'fallback' }}
+{{ settings.button_font | font_face: font_display: 'fallback' }}
 
 {%- assign text_font_bold = settings.text_font | font_modify: 'weight', 'bolder' -%}
 {%- assign text_font_italic = settings.text_font | font_modify: 'style', 'italic' -%}
@@ -63,16 +68,24 @@ $product-sale-price-color: {{settings.product_on_sale_color}};
 {{ text_font_italic | font_face: font_display: 'fallback' }}
 {{ text_font_bold_italic | font_face: font_display: 'fallback' }}
 
+{%- assign button_font_bold = settings.button_font | font_modify: 'weight', 'bolder' -%}
+{{ button_font_bold | font_face: font_display: 'fallback' }}
+
 $heading-font-family : {{settings.heading_font.family}}, {{ settings.heading_font.fallback_families }};
 $heading-font-weight : {{settings.heading_font.weight}};
 $heading-font-style  : {{settings.heading_font.style}};
 $heading-font-size   : {{settings.heading_size}};
-$dm-serif-display:'DM Serif Display', serif;
+$font-size-superheading : 125px;
+
 
 
 $text-font-family : {{settings.text_font.family}}, {{ settings.text_font.fallback_families }};
 $text-font-weight : {{settings.text_font.weight}};
 $text-font-style  : {{settings.text_font.style}};
+
+$button-font-family : {{settings.button_font.family}}, {{ settings.button_font.fallback_families }};
+$button-font-weight : {{settings.button_font.weight}};
+$button-font-style  : {{settings.button_font.style}};
 
 $uppercase-heading: {% if settings.uppercase_heading %}true{% else %}false{% endif %};
 
@@ -1610,7 +1623,7 @@ body {
 }
 
 .Heading {
-  font-family: $heading-font-family;
+  font-family: $custom-font-family;
   font-weight: $heading-font-weight;
   font-style: $heading-font-style;
   color: $heading-color;
@@ -1841,7 +1854,7 @@ body {
     }
 
     .u-h2 {
-      font-size: 22px;
+      font-size: 35px;
     }
 
     .u-h3 {
@@ -1902,9 +1915,9 @@ body {
   font-size: to-size(12px);
   text-align: center;
   letter-spacing: 0.125em;
-  font-family: $heading-font-family;
-  font-weight: $heading-font-weight;
-  font-style: $heading-font-style;
+  font-family: $button-font-family;
+  font-weight: $button-font-weight;
+  font-style: $button-font-style;
   background-color: transparent;
   transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   z-index: 1;
@@ -3828,7 +3841,7 @@ select::-ms-expand {
 .QuantitySelector {
   display: inline-flex;
   align-items: center;
-  border: 1px solid $border-color;
+  border: 1px solid #000;
   white-space: nowrap;
 
   svg {
@@ -7552,7 +7565,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 .FeatureText .SectionHeader__Description {
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 70px;
 }
 
@@ -7768,6 +7781,7 @@ $vertical-spacing-two-products-per-row  : 0px;
     padding: 0;
     margin: 0 -8px;
     border: none;
+    margin-top: 15px;
   }
 }
 
@@ -9050,9 +9064,9 @@ $vertical-spacing-two-products-per-row  : 0px;
   background: #000000;
 }
 
-.Product__SlideshowNav {
-  display: none;
-}
+// .Product__SlideshowNav {
+//   display: none;
+// }
 
 @include av-mq('tablet-and-up') {
   .Product__Gallery {
@@ -9326,7 +9340,7 @@ $vertical-spacing-two-products-per-row  : 0px;
     right: 0;
     width: 375px;
     // margin: 0 100px -40px 100px;
-    padding-top: 65px;
+    padding-top: 40px;
     padding-bottom: 40px;
     margin: 0 auto;
 
@@ -9347,7 +9361,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 @include av-mq('desk') {
   .Product__Info {
-    width: 400px;
+    width: 450px;
   }
 }
 
@@ -9563,7 +9577,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .ProductMeta__Title {
   margin-bottom: 0;
-  font-family: $dm-serif-display;
+  font-family: $custom-font-family;
   font-size: $product-title-size;
   font-weight: 400;
 }
@@ -9704,11 +9718,12 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 .ProductForm__Item {
+  min-width: 130px;
   position: relative;
   width: 100%;
-  text-align: left;
+  text-align: center;
   padding: 10px 28px 10px 14px;
-  border: 1px solid $border-color;
+  border: 1px solid #000;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -11510,6 +11525,10 @@ $vertical-spacing-two-products-per-row  : 0px;
   position: relative;
 }
 
+.align-center{
+  text-align: center;
+}
+
 .desktop-only{
   display: block;
 }
@@ -11527,13 +11546,13 @@ $vertical-spacing-two-products-per-row  : 0px;
   }
 }
 
-.u-h1{
-  font-family: 'DM Serif Display', serif;
-}
+//// Theme special utilities //////
 
 .SuperHeading{
-  font-size: 125px;
-  font-family: 'DM Serif Display', serif;
+  font-size: $font-size-superheading;
+  font-family: $custom-font-family;
+  color: $superheading-color;
+  font-weight: 700;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -11547,7 +11566,10 @@ $vertical-spacing-two-products-per-row  : 0px;
 .btn{
    font-size: $button-text-font-size;
 }
+
 .btn-primary{
+  font-family: $button-font-family;
+  font-weight: 700;
   background-color: $button-background;
   color: $button-text-color;
   padding: 15px 30px;
@@ -11566,10 +11588,16 @@ $vertical-spacing-two-products-per-row  : 0px;
    font-size: $button-text-font-size;
 }
 
+.TextImage__title{
+  margin-bottom: 0;
+}
+
 /*---- footer ---------*/
+
 .Footer__Title{
-  font-family: 'DM Serif Display', serif;
+  font-family: $custom-font-family;
   font-size: 40px;
+  font-weight: 700;
 }
 
 .Footer__Newsletter{
@@ -11578,6 +11606,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 .Form__Input{
   width: 60%;
+  min-width: 180px;
 }
 
 .Button-newsletter{
@@ -11667,7 +11696,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .ArticleItem__Title{
   font-size: 24px;
-  font-family: 'DM Serif Display', serif;
+  font-family: $custom-font-family;
   font-weight: 500;
 }
 
@@ -11682,6 +11711,10 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 /*---- About ---------*/
 
+.PageContent--custom{
+  max-width: 1200px;
+}
+
 .About__background {
   padding-top: 40px;
   margin-bottom: -80px;
@@ -11692,7 +11725,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 .Rte h2{
-  font-family: 'DM Serif Display', serif;
+  font-family: $custom-font-family;
   font-size: 35px;
   letter-spacing: .050em;
 }
@@ -11712,7 +11745,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .megamenu-title{
   font-size: 40px;
-  font-family: 'DM Serif Display', serif;
+  font-family: $custom-font-family;
   margin: 10px 0;
   margin-top: 20px;
 }
@@ -11760,7 +11793,8 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .Product__metafield-title{
   margin-bottom: 0;
-  font-family: $dm-serif-display;
+  font-family: $custom-font-family;
+  font-size: 24px;
 }
 
 .Product__tags{
@@ -11783,7 +11817,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 .Product__tag-line{
   width: 25%;
   height: 4px;
-  background-color: #ededed;
+  background-color: #d5d3d1;
     &:not(:last-child){
       margin-right: 20px;
     }
@@ -11849,7 +11883,7 @@ $vertical-spacing-two-products-per-row  : 0px;
   }
 
 	.ProductForm__Variants{
-    justify-content:space-around;
+    justify-content:space-between;
     margin-top:50px;
   }
 
@@ -11867,7 +11901,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 /// Timeline section
 
 .Timeline__NavLabel{
-  font-family:"DM Serif Display",serif;
+  font-family: $custom-font-family;
   font-size:24px;
   padding-bottom:5px;
 }
@@ -11913,12 +11947,27 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 // product recommendations ////
 
+.ProductRecommendations{
+  max-width: 1500px;
+  margin: 0 auto;
+
+  .ProductList{
+    .Carousel__Cell{
+      padding: 0 10px;
+    }
+  }
+}
+
 .ProductRecommendations__margin{
   margin-top:100px;
 }
 
 .ProductRecommendations_title{
   font-size:35px;
+}
+
+.ProductRecommendations__image{
+  border: none !important;
 }
 
 

@@ -16,6 +16,12 @@
       },
       {
         "type": "color",
+        "id": "superheading_color",
+        "label": "Super Heading",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
         "id": "heading_color",
         "label": "Heading",
         "default": "#1c1b1b"
@@ -89,7 +95,7 @@
         "id": "button-footer_background",
         "label": "Background",
         "default": "#cdc2ac"
-      },  
+      },
       {
         "type": "header",
         "content": "Header"
@@ -243,6 +249,16 @@
         "max": 17,
         "unit": "px",
         "default": 14
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "font_picker",
+        "id": "button_font",
+        "label": "Font",
+        "default": "helvetica_n4"
       }
     ]
   },

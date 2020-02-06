@@ -41,12 +41,12 @@
         {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product.featured_image -%}{%- endcapture -%}
         {%- assign image_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-        <img class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}" data-image-id="{{ product.featured_image.id }}">
+        <img class="ProductItem__Image Image--lazyLoad Image--fadeIn ProductRecommendations__image" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}" data-image-id="{{ product.featured_image.id }}">
         <span class="Image__Loader"></span>
 
         <noscript>
-          <img class="ProductItem__Image ProductItem__Image--alternate" src="{{ product.images[1] | img_url: '600x' }}" alt="{{ product.images[1].alt | escape }}">
-          <img class="ProductItem__Image" src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.featured_image.alt | escape }}">
+          <img class="ProductItem__Image ProductItem__Image--alternate ProductRecommendations__image" src="{{ product.images[1] | img_url: '600x' }}" alt="{{ product.images[1].alt | escape }}">
+          <img class="ProductItem__Image ProductRecommendations__image" src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.featured_image.alt | escape }}">
         </noscript>
       </div>
     </a>
@@ -79,10 +79,10 @@
     {%- if show_product_info -%}
       <div class="ProductItem__Info {% unless use_horizontal %}ProductItem__Info--{{ settings.product_info_alignment }}{% endunless %}">
         {%- if show_vendor -%}
-          <p class="ProductItem__Vendor Heading">{{ product.vendor }}</p>
+          <p class="ProductItem__Vendor u-h3">{{ product.vendor }}</p>
         {%- endif -%}
 
-        <h2 class="ProductItem__Title Heading">
+        <h2 class="ProductItem__Title u-h3">
           <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
         </h2>
 
@@ -136,7 +136,7 @@
           {%- endif -%}
         {%- endif -%}
 
-        {%- if show_price_on_hover == nil -%}
+        {%- if show_price_on_hover == true -%}
           {%- assign show_price_on_hover = settings.product_show_price_on_hover -%}
         {%- endif -%}
 
@@ -145,18 +145,20 @@
         {%- endif -%}
 
         {%- if product.template_suffix != 'coming-soon' -%}
-          <div class="ProductItem__PriceList {% if show_price_on_hover %}ProductItem__PriceList--showOnHover{% endif %} Heading">
+         {% if section.settings.show-price %}
+          <div class="ProductItem__PriceList {% if show_price_on_hover %}ProductItem__PriceList--showOnHover{% endif %}">
             {%- if product.compare_at_price > product.price -%}
-              <span class="ProductItem__Price Price Price--highlight Text--subdued" data-money-convertible>{{ product.price | money_without_trailing_zeros }}</span>
-              <span class="ProductItem__Price Price Price--compareAt Text--subdued" data-money-convertible>{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+              <span class="ProductItem__Price Price Price--highlight " data-money-convertible>{{ product.price | money_without_trailing_zeros }}</span>
+              <span class="ProductItem__Price Price Price--compareAt " data-money-convertible>{{ product.compare_at_price | money_without_trailing_zeros }}</span>
             {%- elsif product.price_varies -%}
               {%- capture formatted_min_price -%}<span data-money-convertible>{{ product.price_min | money_without_trailing_zeros }}</span>{%- endcapture -%}
               {%- capture formatted_max_price -%}<span data-money-convertible>{{ product.price_max | money_without_trailing_zeros }}</span>{%- endcapture -%}
-              <span class="ProductItem__Price Price Text--subdued">{{ 'collection.product.from_price_html' | t: min_price: formatted_min_price, max_price: formatted_max_price }}</span>
+              <span class="ProductItem__Price Price ">{{ 'collection.product.from_price_html' | t: min_price: formatted_min_price, max_price: formatted_max_price }}</span>
             {%- else -%}
-              <span class="ProductItem__Price Price Text--subdued" data-money-convertible>{{ product.price | money_without_trailing_zeros }}</span>
+              <span class="ProductItem__Price Price " data-money-convertible>{{ product.price | money_without_trailing_zeros }}</span>
             {%- endif -%}
           </div>
+          {%- endif -%}
         {%- endif -%}
 
         {%- if show_price_on_hover == false and color_swatch_list != blank -%}

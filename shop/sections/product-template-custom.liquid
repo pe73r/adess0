@@ -254,6 +254,7 @@
       <div class="Product__Info {% if image_count == 0 %}Product__Info--noGallery{% endif %}">
         <div class="Container">
           {%- render 'product-meta', product: product, show_description: true -%}
+
           {% if section.settings.show-metafields %}
             <div class="Product__metafields">
               {% if product.metafields.product.feature-title-1 %}
@@ -270,6 +271,7 @@
                {% endif %}
             </div>
           {% endif %}
+
           {% if section.settings.show-goals %}
              <div class="Product__tags">
                <h3 class="u-h4">{{ section.settings.tag-title }}</h3>
