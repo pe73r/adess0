@@ -16,7 +16,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/******/(function (modules) {
+/******/(function (modules) { 
   // webpackBootstrap
   /******/ // The module cache
   /******/var installedModules = {};

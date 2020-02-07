@@ -12,6 +12,11 @@
       <div class="Container">
         <header class="PageHeader">
           <div class="SectionHeader SectionHeader--center">
+            {% if section.settings.picto-logo %}
+              <div class="BlogPicto__logo">
+                <img src="{{ section.settings.picto-logo }}" alt="{{ section.settings.picto-logo.alt }}">
+              </div>
+            {% endif %}
             <h1 class="SectionHeader__Heading Heading u-h1">
               {{- blog.title -}}
 
@@ -23,12 +28,12 @@
             {%- if section.settings.show_tags and blog.all_tags.size > 0 -%}
               <ul class="Blog__TagList HorizontalList HorizontalList--spacingExtraLoose">
                 <li class="HorizontalList__Item">
-                  <a href="/blogs/{{ blog.handle }}" class="Heading Link Link--primary Text--subdued u-h8 {% if current_tags == blank %}is-active{% endif %}">{{ 'blog.general.all_tag' | t }}</a>
+                  <a href="/blogs/{{ blog.handle }}" class="Heading Link Link--primary Text--subdued u-h3 {% if current_tags == blank %}is-active{% endif %}">{{ 'blog.general.all_tag' | t }}</a>
                 </li>
 
                 {%- for tag in blog.all_tags -%}
                   <li class="HorizontalList__Item">
-                    <a href="/blogs/{{ blog.handle }}/tagged/{{ tag | handle }}" class="Heading Link Link--primary Text--subdued u-h8 {% if current_tags contains tag %}is-active{% endif %}">{{ tag }}</a>
+                    <a href="/blogs/{{ blog.handle }}/tagged/{{ tag | handle }}" class="Heading Link Link--primary Text--subdued u-h3 {% if current_tags contains tag %}is-active{% endif %}">{{ tag }}</a>
                   </li>
                 {%- endfor -%}
               </ul>
@@ -164,6 +169,12 @@
       "id": "bg_color",
       "label": "Background color",
       "default": "#F2EDDD"
+    },
+    {
+      "type": "text",
+      "id": "picto-logo",
+      "label": "Picto logo in header",
+      "default": "https://cdn.shopify.com/s/files/1/0296/3233/1911/files/AM_blog.svg?1323"
     }
   ]
 }

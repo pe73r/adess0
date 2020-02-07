@@ -29,7 +29,15 @@
           {%- endif -%}
 
           {%- if block.settings.logo != blank -%}
-            <img class="Testimonial__Logo hidden-lap-and-up" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+            <div class="Testimonional__logos">
+               <img class="Testimonial__Logo hidden-lap-and-up" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+               {%- if block.settings.logo-2 != blank -%}
+                 <img class="Testimonial__Logo hidden-lap-and-up" src="{{ block.settings.logo-2 | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+               {% endif %}
+               {%- if block.settings.logo-3 != blank -%}
+                 <img class="Testimonial__Logo hidden-lap-and-up" src="{{ block.settings.logo-3 | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+               {% endif %}
+            </div>
           {%- endif -%}
         </div>
       </div>
@@ -40,7 +48,15 @@
     <div class="TestimonialNav hidden-pocket">
       {%- for block in section.blocks -%}
         {%- if block.settings.logo != blank -%}
-          <img class="TestimonialNav__Item {% if forloop.first %}is-selected{% endif %}" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}" data-index="{{ forloop.index0 }}">
+          <div class="Testimonional__logos">
+            <img class="TestimonialNav__Item" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}" data-index="{{ forloop.index0 }}">
+            {%- if block.settings.logo-2 != blank -%}
+             <img class="TestimonialNav__Item" src="{{ block.settings.logo-2 | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}" data-index="{{ forloop.index0 }}">
+            {% endif %}
+            {%- if block.settings.logo-3 != blank -%}
+             <img class="TestimonialNav__Item" src="{{ block.settings.logo-3 | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}" data-index="{{ forloop.index0 }}">
+            {% endif %}
+          </div>
         {%- endif -%}
       {%- endfor -%}
     </div>
@@ -102,6 +118,18 @@
           "type": "image_picker",
           "id": "logo",
           "label": "Logo",
+          "info": "340 x 80px .jpg recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo-2",
+          "label": "Logo 2",
+          "info": "340 x 80px .jpg recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo-3",
+          "label": "Logo 3",
           "info": "340 x 80px .jpg recommended"
         },
         {

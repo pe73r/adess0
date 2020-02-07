@@ -34,7 +34,7 @@
             {%- case block.type -%}
               {%- when 'text' -%}
                 {%- if block.settings.title != blank -%}
-                  <h2 class="Footer__Title Heading u-h6">{{ block.settings.title | escape }}</h2>
+                  <h2 class="Footer__Title Heading u-h2">{{ block.settings.title | escape }}</h2>
                 {%- endif -%}
                   <div class="Footer__Content">
                     {%- if block.settings.mail-content != blank -%}
@@ -61,7 +61,7 @@
                 {%- assign linklist = linklists[block.settings.menu] -%}
 
                 {%- if linklist != empty -%}
-                  <h2 class="Footer__Title Heading u-h6">{{ linklist.title | escape }}</h2>
+                  <h2 class="Footer__Title Heading u-h2">{{ linklist.title | escape }}</h2>
 
                   <ul class="Linklist">
                     {%- for link in linklist.links -%}
@@ -71,11 +71,19 @@
                     {%- endfor -%}
                   </ul>
                 {%- endif -%}
+                  <div class="Footer__pictos">
+                    {% if block.settings.picto-planet != blank %}
+                      <img src="{{ block.settings.picto-planet }}" alt="{{ block.settings.picto-planet.alt }}">
+                     {% endif %}
+                     {% if block.settings.picto-adesso != blank %}
+                      <img src="{{ block.settings.picto-adesso }}" alt="{{ block.settings.picto-adesso.alt }}">
+                     {% endif %}
+                  </div>
 
               {%- when 'newsletter' -%}
                <div class="desktop-only">
                   {%- if block.settings.title != blank -%}
-                    <h2 class="Footer__Title Heading u-h6">{{ block.settings.title | escape }}</h2>
+                    <h2 class="Footer__Title Heading u-h2">{{ block.settings.title | escape }}</h2>
                   {%- endif -%}
 
                   {%- if block.settings.content != blank -%}
@@ -198,6 +206,20 @@
           "id": "menu",
           "label": "Menu",
           "info": "This menu won't show dropdown items."
+        },
+        {
+          "type": "text",
+          "id": "picto-planet",
+          "label": "Picto planet",
+          "default": "https://cdn.shopify.com/s/files/1/0296/3233/1911/files/1_for_planet_Footer.svg?1299",
+          "info": "Insert the url"
+        },
+        {
+          "type": "text",
+          "id": "picto-adesso",
+          "label": "Picto adesso",
+          "default": "https://cdn.shopify.com/s/files/1/0296/3233/1911/files/AM_Footer.svg?1302",
+          "info": "Insert the url"
         }
       ]
     },
