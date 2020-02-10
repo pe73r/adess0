@@ -389,9 +389,9 @@ HEADER CONTENT
               </li>
             {%- endif -%}
 
-            <li class="HorizontalList__Item">
+            <!-- <li class="HorizontalList__Item">
               <a href="{{ routes.search_url }}" class="Link Link--primary Text--subdued u-h8" data-action="toggle-search">{{ 'header.navigation.search' | t }}</a>
-            </li>
+            </li> -->
 
             <li class="HorizontalList__Item">
               <a href="{{ routes.cart_url }}" class="u-h6" {% unless template == 'cart' or settings.cart_type == 'page' %}data-action="open-drawer" data-drawer-id="sidebar-cart" aria-label="{{ 'header.navigation.open_cart' | t }}"{% endunless %}>{{ 'header.navigation.cart' | t }} (<span class="Header__CartCount">{{ cart.item_count }}</span>)</a>
@@ -410,18 +410,20 @@ HEADER CONTENT
 
       {%- if shop.customer_accounts_enabled and section.settings.show_icons or use_sidebar_menu -%}
         <a href="{{ routes.account_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-phone">
-          {%- render 'icon' with 'account' -%}
+          {{- 'header.navigation.account' | t -}}
+        </a>
+        <a href="{{ routes.account_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-tablet-and-up">
+          <span class="hidden-tablet-and-up AccountIcon__mobile">{%- render 'icon' with 'user' -%}</span>
         </a>
       {%- endif -%}
 
-      <a href="{{ routes.search_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable {% unless section.settings.show_icons or use_sidebar_menu %}hidden-desk{% endunless %}" data-action="toggle-search" aria-label="{{ 'header.navigation.search' | t }}">
+      <!-- <a href="{{ routes.search_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable {% unless section.settings.show_icons or use_sidebar_menu %}hidden-desk{% endunless %}" data-action="toggle-search" aria-label="{{ 'header.navigation.search' | t }}">
         <span class="hidden-tablet-and-up">{%- render 'icon' with 'search' -%}</span>
         <span class="hidden-phone">{%- render 'icon' with 'search-desktop' -%}</span>
-      </a>
+      </a> -->
 
       <a href="{{ routes.cart_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable {% unless section.settings.show_icons or use_sidebar_menu %}hidden-desk{% endunless %}" {% if settings.cart_type == 'drawer' %}data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="{{ 'header.navigation.open_cart' | t }}"{% endif %}>
-        <span class="hidden-tablet-and-up">{%- render 'icon' with 'cart' -%}</span>
-        <span class="hidden-phone">{%- render 'icon' with 'cart-desktop' -%}</span>
+        <img class=" Panier__icon" src="https://cdn.shopify.com/s/files/1/0296/3233/1911/files/Trousse.png?v=1581329654" alt="panier-icon">
         <span class="Header__CartDot {% if cart.item_count > 0 %}is-visible{% endif %}"></span>
       </a>
     </div>
@@ -566,8 +568,8 @@ HEADER CONTENT
     {
       "type": "checkbox",
       "id": "show_icons",
-      "label": "Show icons",
-      "info": "Text for account, search and cart are replaced by icons on desktop.",
+      "label": "Show cart icon",
+      "info": "Cart is replaced by icon on desktop.",
       "default": false
     },
     {

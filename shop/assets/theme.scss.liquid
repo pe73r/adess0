@@ -1860,7 +1860,7 @@ body {
 
     .u-h3 {
       font-size: 25px;
-    } 
+    }
 
     .u-h4 {
       font-size: 19px;
@@ -7932,7 +7932,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 .Header__Icon + .Header__Icon {
-  margin-left: 18px;
+  margin-left: 10px;
 }
 
 .supports-sticky .Search[aria-hidden="true"] + .Header--transparent {
@@ -12028,4 +12028,31 @@ $vertical-spacing-two-products-per-row  : 0px;
          border:0;
        }
     }
+}
+
+// Header  ////
+
+.Panier__icon{
+    width: 60px;
+    height: 43px;
+}
+
+.Icon-Wrapper{
+  display: flex;
+}
+
+
+@include av-mq('phone') {
+  .AccountIcon__mobile{
+    width: 18px;
+    margin-top: 10px;
+     svg{
+       fill:#555;
+     }
+  }
+  .Panier__icon{
+      width: 30px;
+      height: 20px;
+      margin-top: 5px;
+  }
 }
