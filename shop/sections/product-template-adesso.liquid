@@ -16,7 +16,7 @@
 
 <section class="Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
   <div class="grid grid--flush">
-  <div class="7/12--lap-and-up grid__cell"> 
+  <div class="7/12--lap-and-up grid__cell">
   <div class="Product__Wrapper">
     {%- capture action_list_items -%}
       {%- if section.settings.enable_image_zoom -%}
@@ -181,7 +181,7 @@
         {%- capture flickity_options -%}
         {
           "prevNextButtons": false,
-          "pageDots": true,
+          "pageDots": false, 
           "adaptiveHeight": true,
           "watchCSS": true,
           "dragThreshold": 8,

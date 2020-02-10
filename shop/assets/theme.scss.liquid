@@ -9275,13 +9275,6 @@ $vertical-spacing-two-products-per-row  : 0px;
       text-align: center;
     }
 
-    .Product__SlideshowNavImage {
-      display: inline-block;
-      width: 70px;
-      height: 70px;
-      margin: 10px;
-      vertical-align: middle;
-    }
 
     .flickity-page-dots {
       display: none;
@@ -11768,13 +11761,31 @@ $vertical-spacing-two-products-per-row  : 0px;
   letter-spacing: 0.050em;
 }
 
-/*---- Page produit ---------*/
+/*---------------------------------*/
+/*----------- PRODUCT ------------*/
+/*---------------------------------*/
 
-.Product__SlideshowCustom{
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  transform: translate(-5%,-50%);
+.Product__Wrapper{
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/*---- Product THUMBNAILS ---------*/
+
+.Product__SlideshowNavImage {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  vertical-align: middle;
+}
+
+.Product__SlideshowNav--thumbnails{
+   position: absolute;
+   top:50%;
+   left: 5%;
+   transform: translate(-5%, -50%);
 }
 
 .Product__SlideshowNavScroller{
@@ -11800,7 +11811,46 @@ $vertical-spacing-two-products-per-row  : 0px;
   }
 }
 
-/*---- Product metafields ---------*/
+
+@media screen and (max-width: 1239px){
+
+  .Product__SlideshowNav--thumbnails{
+    width: 100px;
+  }
+
+  .Product__SlideshowNavImage{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+     img{
+       min-width: 70px;
+       min-height: 70px;
+     }
+  }
+}
+
+@include av-mq('phone') {
+
+  .Product__SlideshowNav--thumbnails{
+     top:80%;
+     left: 5%;
+     transform: translate(-5%, -70%);
+  }
+
+  .Product__SlideshowNavImage{
+    width: 50px;
+    height: 50px;
+     img{
+       min-width: 50px;
+       min-height: 50px;
+     }
+  }
+}
+
+
+
+/*---- Product metafields and product goals---------*/
+
 .Product__metafields{
   padding-bottom: 20px;
   border-bottom: 1px solid #e3e3e3;
@@ -11822,11 +11872,10 @@ $vertical-spacing-two-products-per-row  : 0px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
-
-  h3{
-    margin: 0;
-    width: 33%;
-  }
+    h3{
+      margin: 0;
+      width: 33%;
+    }
 }
 
 .Product__tag-line{
@@ -11845,27 +11894,6 @@ $vertical-spacing-two-products-per-row  : 0px;
   display:none;
 }
 
-@media screen and (max-width: 1239px){
-
-	.Thumbnails__mobile{
-    display:block;
-    position:absolute;
-    top:50%;
-    left:5%;
-    transform:translate(-5%, -50%);
-    z-index:3;
-  }
-	.Thumbnails__flex{
-    display:flex;
-    flex-direction:column;
-  }
-	.Thumbnails__image img{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    margin-bottom:15px;
-  }
-}
 
 @include av-mq('phone') {
 	.ProductMeta__Description{
@@ -11902,18 +11930,9 @@ $vertical-spacing-two-products-per-row  : 0px;
     margin-top:50px;
   }
 
-	.Thumbnails__mobile{
-    top:65%;
-    transform:translate(-5%, 0);
-    img{
-      width:40px;
-      height:40px;
-      margin-bottom:10px;
-    }
-  }
 }
 
-/// Timeline section
+/// Timeline section in Product ///
 
 .Timeline__NavLabel{
   font-family: $custom-font-family;
@@ -11992,7 +12011,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 
 
-// Testimonials homepage  ////
+//// Testimonials in Homepage  ////
 
 .Testimonional__logos{
    display: flex;
@@ -12013,7 +12032,9 @@ $vertical-spacing-two-products-per-row  : 0px;
     }
 }
 
-// Header  ////
+//////////////////////////
+/////// Header  //////////
+/////////////////////////
 
 .Panier__icon{
     width: 60px;
@@ -12033,23 +12054,10 @@ $vertical-spacing-two-products-per-row  : 0px;
        fill:#555;
      }
   }
+
   .Panier__icon{
       width: 30px;
       height: 20px;
       margin-top: 5px;
   }
-}
-
-// new page produit  ////
-
-.Product__Wrapper{
-  width: 100%;
-  max-width: 100%;
-}
-
-.Product__SlideshowNav--thumbnails{
-   position: absolute;
-   top:50%;
-   left: 5%;
-   transform: translate(-5%, -50%);
 }
