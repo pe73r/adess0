@@ -123,7 +123,7 @@
         {%- capture slideshow_nav -%}
           {%- if image_count > 1 -%}
             {%- if section.settings.show_thumbnails -%}
-              <div class="Product__SlideshowNav Product__SlideshowNav--thumbnails">
+              <div class="Product__SlideshowNav Product__SlideshowNav--thumbnails {% if section.settings.show_thumbnails and section.settings.stack_images %} StackwithThumbnailsDesktop {% endif %}">
                 <div class="Product__SlideshowNavScroller">
                   {%- for image in product.images -%}
                     {%- if image.alt == 'featured' or image.alt == 'featured mobile' -%}
@@ -181,7 +181,7 @@
         {%- capture flickity_options -%}
         {
           "prevNextButtons": false,
-          "pageDots": false, 
+          "pageDots": {% if section.settings.stack_images %} true {% else %} false {% endif %}, 
           "adaptiveHeight": true,
           "watchCSS": true,
           "dragThreshold": 8,
@@ -190,10 +190,6 @@
         }
         {%- endcapture -%}
 
-       <!-- thumbnails mobile --->
-        <!-- <div class="Thumbnails__mobile">
-           {% render 'thumbnails-mobile' %}
-        </div> -->
 
         <div class="Product__Slideshow {% if section.settings.enable_image_zoom %}Product__Slideshow--zoomable{% endif %} Carousel" data-flickity-config='{{ flickity_options }}'>
           {{ slideshow_images }}
@@ -611,20 +607,28 @@ This is the root container for the zoom functionality. Must not be removed, as o
     },
     {
       "type": "checkbox",
-      "id": "stack_images",
-      "label": "Stack images on desktop",
+      "id": "enable_image_zoom",
+      "label": "Enable zoom",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Option stack images"
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_images",
+      "label": "Stack images on desktop and dots in mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Option carousel with thumbnails"
     },
     {
       "type": "checkbox",
       "id": "show_thumbnails",
-      "label": "Show thumbnails on desktop",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_image_zoom",
-      "label": "Enable zoom",
+      "label": "Carousel with thumbnails",
       "default": true
     },
     {
