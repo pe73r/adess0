@@ -15,9 +15,10 @@
 {%- endcapture -%}
 
 <section class="Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
+ <div class="{% if section.settings.product-container == "large" %} product-container-large {% elsif section.settings.product-container == "medium" %} product-container-medium {% endif %}">
   <div class="grid grid--flush">
-  <div class="7/12--lap-and-up grid__cell">
-  <div class="Product__Wrapper">
+   <div class="7/12--lap-and-up grid__cell">
+   <div class="Product__Wrapper">
     {%- capture action_list_items -%}
       {%- if section.settings.enable_image_zoom -%}
         <div class="Product__ActionItem hidden-lap-and-up">
@@ -181,7 +182,7 @@
         {%- capture flickity_options -%}
         {
           "prevNextButtons": false,
-          "pageDots": {% if section.settings.stack_images %} true {% else %} false {% endif %}, 
+          "pageDots": {% if section.settings.stack_images %} true {% else %} false {% endif %},
           "adaptiveHeight": true,
           "watchCSS": true,
           "dragThreshold": 8,
@@ -347,7 +348,8 @@
         {{- product_aside -}}
       </div>
     {%- endif -%}
-  </div>
+   </div>
+ </div>
 </section>
 
 {%- comment -%}
@@ -468,6 +470,27 @@ This is the root container for the zoom functionality. Must not be removed, as o
   "class": "shopify-section--bordered",
   "settings": [
     {
+      "type": "select",
+      "id": "product-container",
+      "label": "Container",
+      "options": [
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Full screen"
+        }
+      ],
+      "default": "large",
+      "info": "Container for screens from 1500px width"
+    },
+    {
       "type": "checkbox",
       "id": "show_share_buttons",
       "label": "Show social sharing buttons",
@@ -492,11 +515,20 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "default": false
     },
     {
+      "type": "header",
+      "content": "Metafields"
+    },
+    {
       "type": "checkbox",
       "id": "show-metafields",
       "label": "Show metafields",
       "default": true,
       "info": "Displays the custom product metafields"
+    },
+    {
+      "type": "header",
+      "content": "Goals",
+      "info": "From product tags"
     },
     {
       "type": "checkbox",
@@ -510,6 +542,10 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "id": "tag-title",
       "label": "Tags title",
       "default": "YOUR GOALS"
+    },
+    {
+      "type": "header",
+      "content": "Checkout options"
     },
     {
       "type": "select",

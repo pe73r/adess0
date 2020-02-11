@@ -11599,6 +11599,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 .Footer__Newsletter{
   border: 1px solid #000;
   display: flex;
+  max-width: 300px;
 }
 .Form__Input{
   width: 60%;
@@ -11761,6 +11762,10 @@ $vertical-spacing-two-products-per-row  : 0px;
   letter-spacing: 0.050em;
 }
 
+.menu-mobile__link{
+  text-transform: uppercase;
+}
+
 /*---------------------------------*/
 /*----------- PRODUCT ------------*/
 /*---------------------------------*/
@@ -11768,6 +11773,19 @@ $vertical-spacing-two-products-per-row  : 0px;
 .Product__Wrapper{
   width: 100%;
   max-width: 100%;
+}
+
+@media #{$widescreen} {
+  .product-container-large{
+     max-width: 1800px;
+     margin: auto;
+  }
+
+  .product-container-medium{
+     max-width: 1600px;
+     margin: auto;
+  }
+
 }
 
 
@@ -11812,7 +11830,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 .StackwithThumbnailsDesktop{
-  display: none !important; 
+  display: none !important;
 }
 
 
@@ -11983,7 +12001,7 @@ $vertical-spacing-two-products-per-row  : 0px;
   }
 }
 
-// product recommendations ////
+//// product recommendations ////
 
 .ProductRecommendations{
   max-width: 1500px;
