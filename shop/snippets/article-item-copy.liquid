@@ -5,9 +5,17 @@
 
         <a class="ArticleItem__ImageWrapper AspectRatio AspectRatio--withFallback" href="{{ article.url }}">
           <div class="article-item__box">
-            {% comment %} article-image as background {% endcomment %}
-            <div class="article-item__image" style="background-image: url({{ article.image | img_url: 'master' }})">
-            </div>
+          <div class="article-item__image">
+            <img class="ArticleItem__Image Image--lazyLoad Image--fadeIn"
+                 data-src="{{ image_url }}"
+                 data-widths="[{{ supported_sizes }}]"
+                 data-sizes="auto"
+                 alt="{{ article.image.alt | escape }}">
+
+            <noscript>
+              <img class="ArticleItem__Image" src="{{ article.image | img_url: '600x' }}" alt="{{ article.image.alt | escape }}">
+            </noscript>
+          </div>
           </div>
         </a>
 
