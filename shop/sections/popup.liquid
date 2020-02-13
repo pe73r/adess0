@@ -22,16 +22,24 @@
         {%- endif -%}
 
         {%- if section.settings.show_newsletter -%}
-          {%- form 'customer', id: 'newsletter-popup', class: 'NewsletterPopup__Form' -%}
-            {%- if form.posted_successfully? -%}
-              <p class="Form__Alert Alert Alert--success">{{ 'general.popup.success' | t }}</p>
-            {%- else -%}
-              <input type="hidden" name="contact[tags]" value="newsletter">
-
-              <input type="email" name="contact[email]" class="Form__Input" required="required" aria-label="{{ 'general.popup.email_placeholder' | t }}" placeholder="{{ 'general.popup.email_placeholder' | t }}">
-              <button class="Form__Submit Button Button--primary Button--full" type="submit">{{ 'general.popup.submit' | t }}</button>
-            {%- endif -%}
-          {%- endform -%}
+          <div class="Popup__newsletter">
+            {%- form 'customer', id: 'footer-newsletter', class: 'Footer__Newsletter Form ' -%}
+             <div class="Newsletter__messages">
+               {%- if form.posted_successfully? -%}
+                 <p class="Form__Alert Alert Alert--success">{{ 'footer.newsletter.success' | t }}</p>
+               {%- else -%}
+                 {%- if form.errors -%}
+                   <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
+                 {%- endif -%}
+               {%- endif -%}
+             </div>
+             <div class="Newsletter__flex">
+               <input type="hidden" name="contact[tags]" value="newsletter">
+               <input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="{{ 'footer.newsletter.input' | t }}" required>
+               <button type="submit" class="Button-newsletter">{{ 'footer.newsletter.submit' | t }}</button>
+             </div>
+            {%- endform -%}
+          </div>
         {%- endif -%}
       </aside>
     {%- endunless -%}

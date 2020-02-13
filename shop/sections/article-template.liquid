@@ -192,24 +192,25 @@
 
   {%- if blog.next_article or blog.previous_article -%}
     <aside class="ArticleNav">
-      <div class="Container Container--narrow">
-        <div class="Grid Grid--m Grid--center">
+      <div class="Container container-small">
+        <h2 class="Heading u-h2 align-center OtherPosts__title">{{ section.settings.other-posts-title }}</h2>
+        <div class="grid">
           {%- if blog.next_article -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
+            <div class="grid__cell 1/2--lap-and-up">
               {%- render 'article-item', article: blog.next_article -%}
             </div>
           {%- elsif blog.articles_count > 3 -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
+            <div class="grid__cell 1/2--lap-and-up">
               {%- render 'article-item', article: blog.articles.last -%}
             </div>
           {%- endif -%}
 
           {%- if blog.previous_article -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
+            <div class="grid__cell 1/2--lap-and-up">
               {%- render 'article-item', article: blog.previous_article -%}
             </div>
           {%- elsif blog.articles_count > 3 -%}
-            <div class="Grid__Cell 1/2--tablet-and-up">
+            <div class="grid__cell 1/2--lap-and-up">
               {%- render 'article-item', article: blog.articles.first -%}
             </div>
           {%- endif -%}
@@ -253,6 +254,12 @@
       "id": "show_share_buttons",
       "label": "Show share buttons",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "other-posts-title",
+      "label": "Other posts title",
+      "default": "Other posts"
     }
   ]
 }

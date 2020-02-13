@@ -22,7 +22,7 @@
       <a href="{{ article.url }}">{{ article.title }}</a>
     </h2>
 
-    {%- unless template.name == 'article' -%}
+    {%- unless template.name == '' -%}
       <p class="ArticleItem__Excerpt">{{ article.excerpt_or_content | strip_html | truncate: 150 }}</p>
      {% comment %}  <a href="{{ article.url }}" class="ArticleItem__Link Link Link--underline">{{ 'blog.article.read_more' | t }}</a> {% endcomment %}
     {%- endunless -%}

@@ -93,17 +93,20 @@
                   {%- endif -%}
 
                   {%- form 'customer', id: 'footer-newsletter', class: 'Footer__Newsletter Form ' -%}
-                    {%- if form.posted_successfully? -%}
-                      <p class="Form__Alert Alert Alert--success">{{ 'footer.newsletter.success' | t }}</p>
-                    {%- else -%}
-                      {%- if form.errors -%}
-                        <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
-                      {%- endif -%}
-
-                      <input type="hidden" name="contact[tags]" value="newsletter">
-                      <input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="{{ 'footer.newsletter.input' | t }}" required>
-                      <button type="submit" class="Button-newsletter">{{ 'footer.newsletter.submit' | t }}</button>
-                    {%- endif -%}
+                   <div class="Newsletter__messages">
+                     {%- if form.posted_successfully? -%}
+                       <p class="Form__Alert Alert Alert--success">{{ 'footer.newsletter.success' | t }}</p>
+                     {%- else -%}
+                       {%- if form.errors -%}
+                         <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
+                       {%- endif -%}
+                     {%- endif -%}
+                   </div>
+                   <div class="Newsletter__flex">
+                     <input type="hidden" name="contact[tags]" value="newsletter">
+                     <input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="{{ 'footer.newsletter.input' | t }}" required>
+                     <button type="submit" class="Button-newsletter">{{ 'footer.newsletter.submit' | t }}</button>
+                   </div>
                   {%- endform -%}
                   {%- if block.settings.show_social_media -%}
                     {% render 'social-media', class: 'Footer__Social', spacing: 'loose' %}

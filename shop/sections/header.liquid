@@ -211,7 +211,7 @@ HEADER CONTENT
                           New menu for megamenu -- 22-01-20
                         {%- endcomment -%}
                         <div class="megamenu--menu_box">
-                          <h3 class="megamenu-title Heading u-h2">{{ block.settings.title }}</h3> 
+                          <h3 class="megamenu-title Heading u-h2">{{ block.settings.title }}</h3>
                           <ul>
                             {% for link in linklists[block.settings.menu-megamenu].links %}
                             {% assign sub_key = 'subtitle-' | append: forloop.index %}
@@ -219,7 +219,7 @@ HEADER CONTENT
                               <li>
                                 <a class="menu__link menu-mobile__link" href="{{ link.url }}">{{ link.title | escape }}</a>
                                 {% if sub != blank %}
-                                <h5 class="megamenu-menu__subtitle Heading u-h7">{{ sub }}</h5>
+                                <h5 class="megamenu-menu__subtitle Heading u-h6">{{ sub }}</h5> 
                                 {% endif %}
                               </li>
                             {% endfor %}

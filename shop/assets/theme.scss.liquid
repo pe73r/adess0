@@ -1666,8 +1666,8 @@ body {
 
 .Icon {
   display: inline-block;
-  height: 1.7em;
-  width: 1.7em;
+  height: 1.5em;
+  width: 1.5em;
   fill: currentColor;
   vertical-align: middle;
   stroke-width: 1px;
@@ -1756,7 +1756,7 @@ body {
   }
 
   .u-h2 {
-    font-size: 22px;
+    font-size: 35px;
   }
 
   .u-h3 {
@@ -1859,7 +1859,7 @@ body {
     }
 
     .u-h3 {
-      font-size: 25px;
+      font-size: 20px;
     }
 
     .u-h4 {
@@ -1923,6 +1923,7 @@ body {
   transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   z-index: 1;
   -webkit-tap-highlight-color: initial;
+  min-width: 250px;
 
   &::before {
     position: absolute;
@@ -5468,7 +5469,7 @@ select::-ms-expand {
 }
 
 .SectionHeader__ButtonWrapper {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .SectionHeader__IconHolder {
@@ -5522,7 +5523,7 @@ select::-ms-expand {
   }
 
   .SectionHeader__ButtonWrapper {
-    margin-top: 30px;
+    margin-top: 10px;
   }
 
   .SectionFooter {
@@ -6093,7 +6094,7 @@ select::-ms-expand {
 
 @include av-mq('tablet-and-up') {
   .ArticleNav {
-    padding: 140px 0;
+    padding: 60px 0;
   }
 }
 /**
@@ -11537,15 +11538,23 @@ $vertical-spacing-two-products-per-row  : 0px;
   }
 }
 
+/*------  containers --------*/
+
+.container-small{
+  max-width: 1100px;
+  margin: auto;
+}
+
 //// Theme special utilities //////
 
 .SuperHeading{
   font-size: $font-size-superheading;
   font-family: $custom-font-family;
   color: $superheading-color;
-  font-weight: 700;
+  font-weight: 400;
   max-width: 1200px;
   margin: 0 auto;
+  line-height: 1.3em;
 }
 
 @include av-mq('phone') {
@@ -11598,13 +11607,17 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .Footer__Newsletter{
   border: 1px solid #000;
-  display: flex;
   max-width: 300px;
 }
+
+.Newsletter__flex{
+  display: flex;
+}
+
 .Form__Input{
   width: 60%;
   min-width: 180px;
-}
+} 
 
 .Button-newsletter{
   width: 40%;
@@ -11649,6 +11662,8 @@ $vertical-spacing-two-products-per-row  : 0px;
     img{
       max-width: 40px;
       margin-right: 10px;
+      width: 25px;
+      height: 25px;
     }
 }
 
@@ -11716,6 +11731,7 @@ $vertical-spacing-two-products-per-row  : 0px;
     background-position: center;
 }
 
+
 @include av-mq('phone') {
   .ArticleItem{
     margin-top: 0;
@@ -11723,12 +11739,16 @@ $vertical-spacing-two-products-per-row  : 0px;
   .Blog_background{
     margin-bottom: 0;
   }
+
+  .OtherPosts__title{
+    margin-bottom: 20px;
+  }
 }
 
 /*---- About ---------*/
 
 .PageContent--custom{
-  max-width: 1200px;
+  max-width: 1100px;
 }
 
 .About__background {
@@ -11891,6 +11911,10 @@ $vertical-spacing-two-products-per-row  : 0px;
   margin-bottom: 0;
   font-family: $custom-font-family;
   font-size: 24px;
+}
+
+.Product__metafield-subtitle{
+  margin-bottom: 10px;
 }
 
 .Product__tags{
@@ -12091,4 +12115,10 @@ $vertical-spacing-two-products-per-row  : 0px;
       height: 20px;
       margin-top: 5px;
   }
+}
+
+.Popup__newsletter{
+  margin: 20px auto;
+  text-align: -webkit-center;
+  width: 90%;
 }
