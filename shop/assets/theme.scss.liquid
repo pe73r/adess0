@@ -11617,7 +11617,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 .Form__Input{
   width: 60%;
   min-width: 180px;
-} 
+}
 
 .Button-newsletter{
   width: 40%;
@@ -12051,10 +12051,6 @@ $vertical-spacing-two-products-per-row  : 0px;
   margin-top:100px;
 }
 
-.ProductRecommendations_title{
-  font-size:35px;
-}
-
 .ProductRecommendations__image{
   border: none !important;
 }
@@ -12064,6 +12060,13 @@ $vertical-spacing-two-products-per-row  : 0px;
    border: none !important;
 }
 
+.ProductListWrapper{
+  .is-selected{
+    img{
+      border: 0;
+    }
+  }
+}
 
 
 //// Testimonials in Homepage  ////
@@ -12086,6 +12089,21 @@ $vertical-spacing-two-products-per-row  : 0px;
        }
     }
 }
+
+
+.ProductList--carousel .Carousel__Cell{
+
+}
+
+.ProductListWrapper{
+  .ProductList{
+    .Carousel__Cell{
+      padding: 0 10px;
+    }
+  }
+} 
+
+
 
 //////////////////////////
 /////// Header  //////////
