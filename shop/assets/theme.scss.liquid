@@ -1728,7 +1728,7 @@ body {
   }
 
   .u-h3 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .u-h4 {
@@ -1752,7 +1752,7 @@ body {
   }
 } @else {
   .u-h1 {
-    font-size: 55px;
+    font-size: 50px;
   }
 
   .u-h2 {
@@ -1760,7 +1760,7 @@ body {
   }
 
   .u-h3 {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .u-h4 {
@@ -1795,7 +1795,7 @@ body {
     }
 
     .u-h3 {
-      font-size: 18px;
+      font-size: 14px;
     }
 
     .u-h4 {
@@ -1819,7 +1819,7 @@ body {
     }
   } @else if $heading-font-size == 'normal' {
     .u-h1 {
-      font-size: 22px;
+      font-size: 30px;
     }
 
     .u-h2 {
@@ -1827,7 +1827,7 @@ body {
     }
 
     .u-h3 {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .u-h4 {
@@ -1859,7 +1859,7 @@ body {
     }
 
     .u-h3 {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .u-h4 {
@@ -4770,6 +4770,7 @@ select::-ms-expand {
 @include av-mq('phone') {
   .PageHeader .SectionHeader__Heading {
     margin-bottom: 10px;
+
   }
 }
 
@@ -5412,7 +5413,7 @@ select::-ms-expand {
 
 .Section--spacingLarge,
 .Section--spacingExtraLarge {
-  margin: 90px 0;
+  margin: 80px 0; 
 }
 
 .shopify-section--bordered > .Section--spacingNormal {
@@ -5482,20 +5483,26 @@ select::-ms-expand {
   text-align: center;
 }
 
+@include av-mq('phone') {
+  .SectionHeader__Heading {
+    line-height: 1.2em;
+  }
+}
+
 @include av-mq('tablet-and-up') {
   .SectionHeader__Heading--emphasize {
-    font-size: to-size(55px);
+    font-size: to-size(50px);
     margin: 0;
   }
 }
 
 @include av-mq('lap-and-up') {
   .Section--spacingNormal {
-    margin: 80px 0;
+    margin: 60px 0;
   }
 
   .Section--spacingLarge {
-    margin: 120px 0;
+    margin: 90px 0;
   }
 
   .Section--spacingExtraLarge {
@@ -5503,7 +5510,7 @@ select::-ms-expand {
   }
 
   .shopify-section--bordered > .Section--spacingNormal {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .shopify-section--bordered > .Section--spacingLarge {
@@ -5527,7 +5534,7 @@ select::-ms-expand {
   }
 
   .SectionFooter {
-    margin-top: 80px;
+    margin-top: 30px;
   }
 }
 .TableWrapper {
@@ -6113,7 +6120,7 @@ select::-ms-expand {
 }
 
 .ArticleList .Grid__Cell {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 @if $show-element-staggering {
@@ -6240,7 +6247,7 @@ select::-ms-expand {
 
 @include av-mq('desk') {
   #shopify-section-blog-template + #shopify-section-shop-now {
-    margin-top: 150px;
+    margin-top: 250px;
   }
 }
 /**
@@ -7692,6 +7699,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .Footer__Block {
   margin-top: 48px;
+  text-align: left;
 
   &:first-child {
     margin-top: 0;
@@ -9574,8 +9582,12 @@ $vertical-spacing-two-products-per-row  : 0px;
   font-weight: 400;
 }
 
+.ProductMeta__subtitle{
+  margin-bottom: 0;
+}
+
 .ProductMeta__PriceList {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .ProductMeta__Price.Price--compareAt {
@@ -9583,7 +9595,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 .ProductMeta__Description {
-  margin: 20px 0;
+  margin: 10px 0;
   padding-bottom: 24px;
   border-bottom: 1px solid $border-color;
   text-align: left;
@@ -11608,6 +11620,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 .Footer__Newsletter{
   border: 1px solid #000;
   max-width: 300px;
+  margin: auto;
 }
 
 .Newsletter__flex{
@@ -11629,8 +11642,8 @@ $vertical-spacing-two-products-per-row  : 0px;
   text-align: center;
   margin-bottom: 40px;
   .Icon{
-    height: 2.5em;
-    width: 2.5em;
+    height: 1.8em;
+    width: 1.8em;
   }
 }
 
@@ -11678,13 +11691,18 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 /*---- blog ---------*/
+
+.Blog{
+  padding-bottom: 30px;
+}
+
 .Blog_background{
   padding-top: 20px;
   margin-bottom: -150px;
 }
 
 .ArticleItem{
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .ArticleItem__ImageWrapper{
@@ -11748,7 +11766,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 /*---- About ---------*/
 
 .PageContent--custom{
-  max-width: 1100px;
+  max-width: 1000px;
 }
 
 .About__background {
@@ -11762,7 +11780,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .Rte h2{
   font-family: $custom-font-family;
-  font-size: 35px;
+  font-size: 40px;
   letter-spacing: .050em;
 }
 
@@ -12048,7 +12066,7 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 .ProductRecommendations__margin{
-  margin-top:100px;
+  margin-top: 50px;
 }
 
 .ProductRecommendations__image{
@@ -12065,6 +12083,12 @@ $vertical-spacing-two-products-per-row  : 0px;
     img{
       border: 0;
     }
+  }
+}
+
+@include av-mq('phone') {
+  .ProductRecommendations__margin{
+    margin-top: 80px;
   }
 }
 
@@ -12101,7 +12125,7 @@ $vertical-spacing-two-products-per-row  : 0px;
       padding: 0 10px;
     }
   }
-} 
+}
 
 
 

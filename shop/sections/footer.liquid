@@ -8,7 +8,7 @@
   {%- assign add_top_margin = false -%}
 {%- endif -%}
 
-<footer id="section-{{ section.id }}" class="Footer {% if section.blocks.size <= 2 %}Footer--center{% endif %} {% if add_top_margin %}Footer--withMargin{% endif %}" role="contentinfo">
+<footer id="section-{{ section.id }}" class="Footer SectionFooter {% if section.blocks.size <= 2 %}Footer--center{% endif %} {% if add_top_margin %}Footer--withMargin{% endif %}" role="contentinfo">
   <div class="Container">
     {%- if section.blocks.size > 0 -%}
       <div class="Footer__Inner">
@@ -17,17 +17,21 @@
               {% render 'social-media', class: 'Footer__Social', spacing: 'loose' %}
             </div>
               {%- form 'customer', id: 'footer-newsletter', class: 'Footer__Newsletter Form ' -%}
-                {%- if form.posted_successfully? -%}
-                  <p class="Form__Alert Alert Alert--success">{{ 'footer.newsletter.success' | t }}</p>
+               <div class="Newsletter__messages">
+                 {%- if form.posted_successfully? -%}
+                   <p class="Form__Alert Alert Alert--success">{{ 'footer.newsletter.success' | t }}</p>
                  {%- else -%}
-                 {%- if form.errors -%}
-                  <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
+                   {%- if form.errors -%}
+                     <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
+                   {%- endif -%}
                  {%- endif -%}
-                  <input type="hidden" name="contact[tags]" value="newsletter">
-                  <input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="{{ 'footer.newsletter.input' | t }}" required>
-                  <button type="submit" class="Button-newsletter">{{ 'footer.newsletter.submit' | t }}</button>
-                 {%- endif -%}
-              {%- endform -%}
+               </div>
+               <div class="Newsletter__flex">
+                 <input type="hidden" name="contact[tags]" value="newsletter">
+                 <input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="{{ 'footer.newsletter.input' | t }}" required>
+                 <button type="submit" class="Button-newsletter">{{ 'footer.newsletter.submit' | t }}</button>
+               </div>
+              {%- endform -%} 
           </div>
         {%- for block in section.blocks -%}
           <div class="Footer__Block Footer__Block--{{ block.type }}" {{ block.shopify_attributes }}>

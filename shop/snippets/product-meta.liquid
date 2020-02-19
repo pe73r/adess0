@@ -20,7 +20,7 @@
     {%- endif -%}
   </h1>
   {% if product.metafields.product.subtitle %}
-    <h2 class="u-h4">{{ product.metafields.product.subtitle }}</h2>
+    <h2 class="u-h4 ProductMeta__subtitle">{{ product.metafields.product.subtitle }}</h2>
   {% endif %}
 
   {%- if section.settings.show_sku and product.selected_or_first_available_variant.sku != blank -%}
