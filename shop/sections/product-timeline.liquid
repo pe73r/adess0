@@ -1,17 +1,9 @@
-<style>
-  {% for block in section.blocks %}
-    #block-{{ block.id }} .Timeline__flex{
-       flex-direction: {{ block.settings.flex-direction}};
-     }
-  {% endfor %}
-</style>
 <section id="section-{{ section.id }}" class="Section Section--spacingNormal" data-section-id="{{ section.id }}" data-section-type="timeline">
   <div class="Container">
     <div class="Timeline">
       <div class="Timeline__ListItem">
         {%- for block in section.blocks -%}
-        <div id="block-{{ block.id }}" data-section-id="{{ block.id }}" data-section-type="Timeline-block">
-          <div {{ block.shopify_attributes }} class="Timeline__Item {% if forloop.first %}is-selected{% endif %} Timeline__flex" data-index="{{ forloop.index0 }}">
+          <div id="block-{{ block.id }}" {{ block.shopify_attributes }} class="Timeline__Item {% if forloop.first %}is-selected{% endif %} Timeline__flex" data-index="{{ forloop.index0 }}">
             <div class="Timeline__ImageWrapper {% if block.settings.apply_overlay %}Image--contrast{% endif %}" {% if block.settings.image %}style="background: url({{ block.settings.image | img_url: '1x1' }})"{% endif %}>
               {%- if block.settings.image -%}
                 <div class="Timeline__Image Image--lazyLoad hide-no-js" data-bgset="{{ block.settings.image | img_url: 'x650' }} [(max-width: 640px)] | {{ block.settings.image | img_url: '1000x' }}"></div>
@@ -56,7 +48,6 @@
             {%- endif -%}
 
            </div>
-         </div>
         {%- endfor -%}
       </div>
 
@@ -79,6 +70,12 @@
   #section-{{ section.id }} .Timeline__ListItem {
     color: {{ section.settings.text_color }};
   }
+
+  {% for block in section.blocks %}
+    #block-{{ block.id }} {
+       flex-direction: {{ block.settings.flex-direction}};
+     }
+  {% endfor %}
 </style>
 
 {% schema %}

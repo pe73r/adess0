@@ -5413,7 +5413,7 @@ select::-ms-expand {
 
 .Section--spacingLarge,
 .Section--spacingExtraLarge {
-  margin: 80px 0; 
+  margin: 80px 0;
 }
 
 .shopify-section--bordered > .Section--spacingNormal {
@@ -11681,6 +11681,10 @@ $vertical-spacing-two-products-per-row  : 0px;
 }
 
 @include av-mq('phone') {
+  .Footer__Newsletter{
+    max-width: 350px;
+  }
+
   .Footer__legal{
     flex-direction: column-reverse;
     justify-content: center;
@@ -11782,6 +11786,7 @@ $vertical-spacing-two-products-per-row  : 0px;
   font-family: $custom-font-family;
   font-size: 40px;
   letter-spacing: .050em;
+  margin-top: 0;
 }
 
 .BlogPicto__logo{
@@ -11789,6 +11794,12 @@ $vertical-spacing-two-products-per-row  : 0px;
   margin: 0 auto;
 }
 
+@include av-mq('phone') {
+  .Rte h2{
+    margin-bottom: 20px;
+    line-height: 1.2em; 
+  }
+}
 /*---- Megamenu ---------*/
 
 .megamenu--menu_box{
